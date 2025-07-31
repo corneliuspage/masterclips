@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Premium grooming services at Master Clips Barbershop in Ikorodu, Lagos - haircuts, beard trims, hair treatments and more" />
+  <meta name="keywords" content="barbershop services, haircuts Lagos, beard grooming, hair treatment, barber home service" />
+  <meta name="author" content="Master Clips" />
+  <title>Our Services | Master Clips Barbershop</title>
+  <style>
+    :root {
+      --black: #1A1A1A;
+      --gray: #6E6E6E;
+      --red: #C62828;
+      --white: #F5F5F5;
+      --transition: all 0.3s ease-in-out;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      animation: fadeIn 1.5s ease-in;
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    header img {
+      height: 60px;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: var(--white);
+      opacity: 0.8;
+    }
+
+    nav {
+      background-color: var(--black);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0.5rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-logo {
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      padding: 0.5rem 1rem;
+      color: var(--white);
+      text-decoration: none;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .nav-links a.active {
+      color: var(--red);
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background-color: var(--white);
+      margin: 3px 0;
+      transition: var(--transition);
+    }
+
+    .burger.active div:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .burger.active div:nth-child(2) {
+      opacity: 0;
+    }
+
+    .burger.active div:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .services-hero {
+      background: url('/storage/emulated/0/dye2.jpeg') no-repeat center center/cover;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      animation: slideIn 1s ease-in-out;
+    }
+
+    .services-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .services-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .services-hero h1 {
+      font-size: 2.5rem;
+      color: var(--white);
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+      animation: fadeIn 2s ease-in-out;
+      margin-bottom: 1rem;
+    }
+
+    .services-hero p {
+      color: var(--white);
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    section {
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--black);
+      position: relative;
+      display: inline-block;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background-color: var(--red);
+    }
+
+    .services-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .service-card {
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: var(--transition);
+      animation: fadeInUp 0.8s ease-out;
+      text-align: left;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .service-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .service-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .service-card:hover .service-image img {
+      transform: scale(1.05);
+    }
+
+    .service-content {
+      padding: 1.5rem;
+    }
+
+    .service-content h3 {
+      color: var(--red);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .service-content p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    .service-btn {
+      display: inline-block;
+      background-color: var(--red);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .service-btn:hover {
+      background-color: #a91d1d;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .service-btn i {
+      margin-left: 0.5rem;
+    }
+
+    .contact {
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    .contact a {
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .contact a:hover {
+      opacity: 0.8;
+    }
+
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--red);
+    }
+
+    .copyright {
+      opacity: 0.7;
+      margin-top: 1rem;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--red);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 99;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (max-width: 768px) {
+      .burger {
+        display: flex;
+      }
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        background-color: var(--black);
+        padding: 1rem 0;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .services-hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <img src="/storage/emulated/0/MCW.png" alt="Master Clips Logo" />
+    <p>Perfect trims creating the perfect look</p>
+  </header>
+
+  <nav>
+    <div class="burger" id="burger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <section class="services-hero">
+    <div class="services-hero-content">
+      <h1>Our Premium Services</h1>
+      <p>Experience exceptional grooming with our professional services tailored to your style</p>
+    </div>
+  </section>
+
+  <section id="services">
+    <h2>What We Offer</h2>
+    <p>From classic cuts to specialized treatments, we've got you covered</p>
+    
+    <div class="services-container">
+      <!-- Haircuts & Styling -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="/storage/emulated/0/mohawk.jpeg" alt="Haircuts & Styling">
+        </div>
+        <div class="service-content">
+          <h3>Haircuts & Styling</h3>
+          <p>Transform your look with our precision cuts and contemporary styles. Whether you want a classic taper or a modern textured crop, our skilled barbers will craft the perfect cut to match your personality and lifestyle.</p>
+          <a href="https://wa.me/2348080164223" class="service-btn" target="_blank">
+            Book Now <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Beard Trimming -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="/storage/emulated/0/beard.jpg" alt="Beard Trimming">
+        </div>
+        <div class="service-content">
+          <h3>Beard Trimming</h3>
+          <p>A well-groomed beard makes a powerful statement. Our expert trimming and shaping services will define your jawline, enhance your facial features, and keep your beard looking sharp and healthy.</p>
+          <a href="https://wa.me/2348080164223" class="service-btn" target="_blank">
+            Book Now <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Kids Haircuts -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="/storage/emulated/0/kid.webp" alt="Kids Haircuts">
+        </div>
+        <div class="service-content">
+          <h3>Kids Haircuts</h3>
+          <p>Specialized cuts in a fun, comfortable environment for our youngest clients. We make haircuts an enjoyable experience while creating stylish looks that kids love and parents appreciate.</p>
+          <a href="https://wa.me/2348080164223" class="service-btn" target="_blank">
+            Book Now <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Hair Dyeing -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="/storage/emulated/0/dye.jpg" alt="Hair Dyeing">
+        </div>
+        <div class="service-content">
+          <h3>Hair Dyeing</h3>
+          <p>Refresh your look with our professional coloring services. Using premium products, we'll help you achieve vibrant colors, subtle highlights, or natural-looking coverage - all while maintaining your hair's health.</p>
+          <a href="https://wa.me/2348080164223" class="service-btn" target="_blank">
+            Book Now <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Dreadlocks -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="/storage/emulated/0/dread.jpeg" alt="Dreadlocks">
+        </div>
+        <div class="service-content">
+          <h3>Dreadlocks</h3>
+          <p>From starter locs to mature dread maintenance, our specialists provide professional locking, retwisting, and styling services. We use techniques that promote healthy hair growth and keep your locs looking fresh.</p>
+          <a href="https://wa.me/2348080164223" class="service-btn" target="_blank">
+            Book Now <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Hair Washing & Treatment -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="/storage/emulated/0/wash.jpeg" alt="Hair Washing & Treatment">
+        </div>
+        <div class="service-content">
+          <h3>Hair Washing & Treatment</h3>
+          <p>Revitalize your hair with our therapeutic wash and treatment sessions. We use premium products to cleanse, condition, and restore moisture balance, leaving your hair refreshed, nourished, and full of life.</p>
+          <a href="https://wa.me/2348080164223" class="service-btn" target="_blank">
+            Book Now <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Home Service -->
+      <div class="service-card">
+        <div class="service-image">
+          <img src="/storage/emulated/0/home.jpg" alt="Home Service">
+        </div>
+        <div class="service-content">
+          <h3>Home Service</h3>
+          <p>Premium grooming at your convenience. Our mobile barbers bring the Master Clips experience to your home or office, complete with all tools and products needed for a perfect cut in the comfort of your space.</p>
+          <a href="https://wa.me/2348080164223" class="service-btn" target="_blank">
+            Book Now <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact fade-scroll" id="contact">
+    <h1>Ready for Your Transformation?</h1>
+    <p>Visit us at 152, Sagamu Road, Ikorodu, Lagos</p>
+    <p>Call us: <a href="tel:08080164223">08080164223</a> or message us on WhatsApp</p>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Master Clips. All rights reserved.
+    </div>
+  </footer>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Burger toggle
+      const burger = document.getElementById('burger');
+      const navLinks = document.getElementById('navLinks');
+      
+      burger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        burger.classList.toggle('active');
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          burger.classList.remove('active');
+        });
+      });
+
+      // Back to top button
+      const backToTop = document.getElementById('backToTop');
+      
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      // Smooth scrolling for all links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

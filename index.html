@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Master Clips is a premium unisex barbershop in Ikorodu, Lagos offering stylish haircuts, beard trims, and exceptional grooming experiences." />
+  <meta name="keywords" content="barbershop, haircuts, Ikorodu, Lagos, grooming, unisex salon, Master Clips" />
+  <meta name="author" content="Master Clips" />
+  <title>Master Clips | Premium Barbershop in Ikorodu</title>
+  <style>
+    :root {
+      --black: #1A1A1A;
+      --gray: #6E6E6E;
+      --red: #C62828;
+      --white: #F5F5F5;
+      --transition: all 0.3s ease-in-out;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      animation: fadeIn 1.5s ease-in;
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    header img {
+      height: 60px;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: var(--white);
+      opacity: 0.8;
+    }
+
+    nav {
+      background-color: var(--black);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0.5rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-logo {
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      padding: 0.5rem 1rem;
+      color: var(--white);
+      text-decoration: none;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background-color: var(--white);
+      margin: 3px 0;
+      transition: var(--transition);
+    }
+
+    .burger.active div:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .burger.active div:nth-child(2) {
+      opacity: 0;
+    }
+
+    .burger.active div:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .hero {
+      background: url('/storage/emulated/0/heropics.jpg') no-repeat center center/cover;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      animation: slideIn 1s ease-in-out;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      color: var(--white);
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+      animation: fadeIn 2s ease-in-out;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: var(--white);
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .hero button {
+      margin-top: 1.5rem;
+      background-color: var(--red);
+      color: var(--white);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+      animation: fadeIn 2.5s ease-in-out;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero button:hover {
+      background-color: #a91d1d;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    section {
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+    section h3 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--black);
+      position: relative;
+      display: inline-block;
+    }
+
+    section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background-color: var(--red);
+    }
+
+    .gallery-images, .testimonial-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-images img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .gallery-images img:hover {
+      transform: scale(1.05);
+    }
+
+    .testimonial {
+      background-color: var(--white);
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: var(--transition);
+      text-align: left;
+    }
+
+    .testimonial.hidden {
+      display: none;
+    }
+
+    .testimonial:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    .testimonial::before {
+      content: '"';
+      font-size: 3rem;
+      color: var(--red);
+      opacity: 0.3;
+      line-height: 0;
+      display: block;
+      margin-bottom: -1rem;
+    }
+
+    .testimonial-author {
+      font-weight: bold;
+      margin-top: 0.5rem;
+      color: var(--red);
+      font-style: italic;
+    }
+
+    .testimonial-controls {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .testimonial-controls button {
+      background-color: var(--red);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .testimonial-controls button:hover {
+      background-color: #a91d1d;
+    }
+
+    .testimonial-controls button.hidden {
+      display: none;
+    }
+
+    .add-testimonial {
+      max-width: 600px;
+      margin: 3rem auto 0;
+      padding: 2rem;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .add-testimonial h4 {
+      margin-bottom: 1rem;
+      color: var(--black);
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      background-color: var(--red);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .submit-btn:hover {
+      background-color: #a91d1d;
+    }
+
+    .contact {
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    .contact a {
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .contact a:hover {
+      opacity: 0.8;
+    }
+
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--red);
+    }
+
+    .copyright {
+      opacity: 0.7;
+      margin-top: 1rem;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--red);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 99;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (max-width: 768px) {
+      .burger {
+        display: flex;
+      }
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        background-color: var(--black);
+        padding: 1rem 0;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .hero h2 {
+        font-size: 2rem;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .fade-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease;
+    }
+
+    .fade-scroll.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="/storage/emulated/0/MCW.png" alt="Master Clips Logo" />
+    <p>Perfect trims creating the perfect look</p>
+  </header>
+
+  <nav>
+    <div class="burger" id="burger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Style That Defines You</h2>
+      <p>Premium grooming services for men, women, and kids in Ikorodu, Lagos</p>
+      <button onclick="window.location.href='https://wa.me/2348080164223'">Book Now</button>
+    </div>
+  </section>
+
+  <section id="about" class="fade-scroll">
+    <h3>Welcome to Master Clips</h3>
+    <p>Located in Ikorodu, Lagos, we provide premium grooming services with modern techniques and traditional craftsmanship. Our skilled barbers are dedicated to giving you the perfect look that matches your personality.</p>
+  </section>
+
+  <section id="services" class="fade-scroll">
+    <h3>Our Services</h3>
+    <p>We offer a wide range of grooming services tailored to your needs</p>
+    <div class="gallery-images">
+      <div class="testimonial">
+        <h4>Haircuts & Styling</h4>
+        <p>From classic cuts to modern styles, we create the perfect look for you.</p>
+      </div>
+      <div class="testimonial">
+        <h4>Beard Trimming</h4>
+        <p>Professional beard grooming to keep you looking sharp and well-maintained.</p>
+      </div>
+      <div class="testimonial">
+        <h4>Kids Haircuts</h4>
+        <p>Specialized services for our youngest clients in a comfortable environment.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="fade-scroll">
+    <h3>Our Gallery</h3>
+    <p>Take a glimpse into our grooming world</p>
+    <div class="gallery-images">
+      <img src="/storage/emulated/0/mohawk.jpeg" alt="Mohawk haircut">
+      <img src="/storage/emulated/0/fade.jpeg" alt="Fade hairstyle">
+      <img src="/storage/emulated/0/kid.webp" alt="Kids hairstyle">
+    </div>
+    <button style="margin-top: 2rem;" onclick="window.location.href='gallery.html'">See More</button>
+  </section>
+
+  <section id="testimonials" class="fade-scroll">
+    <h3>What Our Customers Say</h3>
+    <div class="testimonial-list" id="testimonialList">
+      <!-- First 5 testimonials (visible by default) -->
+      <div class="testimonial">
+        "Amazing service and very professional barbers! I've been coming here for years and always leave satisfied."
+        <div class="testimonial-author">– Chuka A.</div>
+      </div>
+      <div class="testimonial">
+        "Took my kids here and they loved the experience. The barbers are great with children."
+        <div class="testimonial-author">– Bisi M.</div>
+      </div>
+      <div class="testimonial">
+        "Best fade I've had in Lagos. Attention to detail is unmatched."
+        <div class="testimonial-author">– Jide O.</div>
+      </div>
+      <div class="testimonial">
+        "Consistently excellent service. My go-to barbershop in Ikorodu."
+        <div class="testimonial-author">– Adeola K.</div>
+      </div>
+      <div class="testimonial">
+        "Friendly atmosphere and skilled barbers. Highly recommend!"
+        <div class="testimonial-author">– Femi T.</div>
+      </div>
+      
+      <!-- Next 5 testimonials (hidden by default) -->
+      <div class="testimonial hidden">
+        "They transformed my messy beard into a work of art. Will definitely be back!"
+        <div class="testimonial-author">– Ibrahim S.</div>
+      </div>
+      <div class="testimonial hidden">
+        "Quick service without compromising on quality. Perfect for busy people."
+        <div class="testimonial-author">– Grace O.</div>
+      </div>
+      <div class="testimonial hidden">
+        "My son was nervous about his first haircut, but the barber made him feel so comfortable."
+        <div class="testimonial-author">– Nneka U.</div>
+      </div>
+      <div class="testimonial hidden">
+        "Clean environment and professional tools. You can tell they care about hygiene."
+        <div class="testimonial-author">– David L.</div>
+      </div>
+      <div class="testimonial hidden">
+        "Worth every penny. You get premium service at reasonable prices."
+        <div class="testimonial-author">– Tunde B.</div>
+      </div>
+    </div>
+
+    <div class="testimonial-controls">
+      <button id="seeMoreBtn">See More Testimonials</button>
+      <button id="seeLessBtn" class="hidden">See Less</button>
+    </div>
+
+    <div class="add-testimonial">
+      <h4>Share Your Experience</h4>
+      <form id="testimonialForm">
+        <div class="form-group">
+          <label for="testimonialText">Your Testimonial</label>
+          <textarea id="testimonialText" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="testimonialName">Your Name</label>
+          <input type="text" id="testimonialName" required>
+        </div>
+        <button type="submit" class="submit-btn">Submit Testimonial</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="contact fade-scroll" id="contact">
+    <h1>Visit Us</h1>
+    <p>152, Sagamu Road, Ikorodu, Lagos</p>
+    <p>Phone: <a href="tel:08080164223">08080164223</a></p>
+    <p>Email: <a href="mailto:corneliusayomide@gmail.com">info@masterclips.com</a></p>
+    <p>Opening Hours: Mon-Sat 9am-7pm</p>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Master Clips. All rights reserved.
+    </div>
+  </footer>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Burger toggle
+      const burger = document.getElementById('burger');
+      const navLinks = document.getElementById('navLinks');
+      
+      burger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        burger.classList.toggle('active');
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          burger.classList.remove('active');
+        });
+      });
+
+      // Scroll animation
+      const scrollElems = document.querySelectorAll('.fade-scroll');
+      const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      scrollElems.forEach(el => scrollObserver.observe(el));
+
+      // Back to top button
+      const backToTop = document.getElementById('backToTop');
+      
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      // Smooth scrolling for all links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Testimonial functionality
+      const seeMoreBtn = document.getElementById('seeMoreBtn');
+      const seeLessBtn = document.getElementById('seeLessBtn');
+      const hiddenTestimonials = document.querySelectorAll('.testimonial.hidden');
+      const testimonialForm = document.getElementById('testimonialForm');
+
+      // Initially hide the "See Less" button
+      seeLessBtn.classList.add('hidden');
+
+      // Show more testimonials
+      seeMoreBtn.addEventListener('click', () => {
+        hiddenTestimonials.forEach(testimonial => {
+          testimonial.classList.remove('hidden');
+        });
+        seeMoreBtn.classList.add('hidden');
+        seeLessBtn.classList.remove('hidden');
+      });
+
+      // Show less testimonials
+      seeLessBtn.addEventListener('click', () => {
+        hiddenTestimonials.forEach(testimonial => {
+          testimonial.classList.add('hidden');
+        });
+        seeLessBtn.classList.add('hidden');
+        seeMoreBtn.classList.remove('hidden');
+      });
+
+      // Add new testimonial
+      testimonialForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const testimonialText = document.getElementById('testimonialText').value;
+        const testimonialName = document.getElementById('testimonialName').value;
+        
+        if (testimonialText && testimonialName) {
+          // Create new testimonial element
+          const newTestimonial = document.createElement('div');
+          newTestimonial.className = 'testimonial';
+          newTestimonial.innerHTML = `
+            "${testimonialText}"
+            <div class="testimonial-author">– ${testimonialName}</div>
+          `;
+          
+          // Add to the beginning of the list
+          document.getElementById('testimonialList').prepend(newTestimonial);
+          
+          // Reset form
+          testimonialForm.reset();
+          
+          // Show success message
+          alert('Thank you for your testimonial!');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

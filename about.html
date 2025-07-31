@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover Master Clips - Ikorodu's premium barbershop offering exceptional grooming services with highly skilled professionals" />
+  <meta name="keywords" content="about Master Clips, barbershop team, professional barbers Lagos, premium grooming" />
+  <meta name="author" content="Master Clips" />
+  <title>About Us | Master Clips Barbershop</title>
+  <style>
+    :root {
+      --black: #1A1A1A;
+      --gray: #6E6E6E;
+      --red: #C62828;
+      --white: #F5F5F5;
+      --transition: all 0.3s ease-in-out;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      animation: fadeIn 1.5s ease-in;
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    header img {
+      height: 60px;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: var(--white);
+      opacity: 0.8;
+    }
+
+    nav {
+      background-color: var(--black);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0.5rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-logo {
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      padding: 0.5rem 1rem;
+      color: var(--white);
+      text-decoration: none;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .nav-links a.active {
+      color: var(--red);
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background-color: var(--white);
+      margin: 3px 0;
+      transition: var(--transition);
+    }
+
+    .burger.active div:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .burger.active div:nth-child(2) {
+      opacity: 0;
+    }
+
+    .burger.active div:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .about-hero {
+      background: url('/storage/emulated/0/heropics.jpg') no-repeat center center/cover;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      animation: slideIn 1s ease-in-out;
+    }
+
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .about-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-hero h1 {
+      font-size: 2.5rem;
+      color: var(--white);
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+      animation: fadeIn 2s ease-in-out;
+      margin-bottom: 1rem;
+    }
+
+    .about-hero p {
+      color: var(--white);
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    section {
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--black);
+      position: relative;
+      display: inline-block;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background-color: var(--red);
+    }
+
+    .about-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .about-content p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .value-card {
+      background-color: #f9f9f9;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    .value-icon {
+      font-size: 2.5rem;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+
+    .value-card h3 {
+      color: var(--black);
+      margin-bottom: 1rem;
+    }
+
+    .team {
+      background-color: #f9f9f9;
+    }
+
+    .team-members {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .member-card {
+      background-color: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: var(--transition);
+    }
+
+    .member-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .member-image {
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .member-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .member-card:hover .member-image img {
+      transform: scale(1.05);
+    }
+
+    .member-info {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .member-info h3 {
+      color: var(--red);
+      margin-bottom: 0.5rem;
+    }
+
+    .member-position {
+      color: var(--gray);
+      font-weight: 500;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .member-experience {
+      background-color: var(--red);
+      color: var(--white);
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .member-skills {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      color: var(--gray);
+    }
+
+    .member-specialty {
+      font-style: italic;
+      color: var(--black);
+      font-weight: 500;
+    }
+
+    .cta-section {
+      background-color: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+
+    .cta-section h2 {
+      color: var(--white);
+    }
+
+    .cta-section h2::after {
+      background-color: var(--white);
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background-color: var(--red);
+      color: var(--white);
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .cta-btn:hover {
+      background-color: #a91d1d;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--red);
+    }
+
+    .copyright {
+      opacity: 0.7;
+      margin-top: 1rem;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--red);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 99;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (max-width: 768px) {
+      .burger {
+        display: flex;
+      }
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        background-color: var(--black);
+        padding: 1rem 0;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .about-hero h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <img src="/storage/emulated/0/MCW.png" alt="Master Clips Logo" />
+    <p>Perfect trims creating the perfect look</p>
+  </header>
+
+  <nav>
+    <div class="burger" id="burger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <section class="about-hero">
+    <div class="about-hero-content">
+      <h1>Crafting Confidence Through Style</h1>
+      <p>Where precision meets passion in every cut</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>Our Story</h2>
+    <div class="about-content">
+      <p>Master Clips was founded with a vision to redefine men's grooming in Ikorodu, Lagos. What began as a single-chair barbershop has grown into a premier destination for those who appreciate the art of fine grooming and exceptional service.</p>
+      
+      <p>We believe a great haircut is more than just a service - it's an experience that boosts confidence and leaves a lasting impression. Our barbers are not just technicians; they're artists who understand the nuances of facial structure, hair texture, and personal style.</p>
+      
+      <p>At Master Clips, we've created a space that blends traditional barbering techniques with contemporary styles. Our commitment to excellence has earned us a loyal clientele who appreciate our attention to detail, relaxing atmosphere, and consistently outstanding results.</p>
+      
+      <div class="values">
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-cut"></i>
+          </div>
+          <h3>Precision Craftsmanship</h3>
+          <p>Every cut is executed with meticulous attention to detail and technical excellence.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-spa"></i>
+          </div>
+          <h3>Premium Experience</h3>
+          <p>From the moment you enter, enjoy a relaxing atmosphere with top-tier service.</p>
+        </div>
+        
+        <div class="value-card">
+          <div class="value-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Client Relationships</h3>
+          <p>We build lasting connections by understanding and anticipating your needs.</p>
+        </div>
+      </div>
+      
+      <p>Our mission is simple: to provide exceptional grooming services that help our clients look and feel their best. Whether you're preparing for a special occasion or maintaining your everyday style, our team is dedicated to delivering results that exceed your expectations.</p>
+    </div>
+  </section>
+
+  <section class="team">
+    <h2>Meet Our Master Barbers</h2>
+    <p>Highly skilled professionals dedicated to your grooming perfection</p>
+    
+    <div class="team-members">
+      <!-- Team Member 1 -->
+      <div class="member-card">
+        <div class="member-image">
+          <img src="/storage/emulated/0/guy1.jpg" alt="Tunde Adebayo">
+        </div>
+        <div class="member-info">
+          <h3>Tunde Adebayo</h3>
+          <span class="member-position">Master Barber</span>
+          <span class="member-experience">12 years experience</span>
+          <p class="member-skills">Specializes in precision fades, classic cuts, and beard sculpting</p>
+          
+        </div>
+      </div>
+      
+      <!-- Team Member 2 -->
+      <div class="member-card">
+        <div class="member-image">
+          <img src="/storage/emulated/0/girl1.jpg" alt="Amina Okafor">
+        </div>
+        <div class="member-info">
+          <h3>Amina Okafor</h3>
+          <span class="member-position">Style Director</span>
+          <span class="member-experience">5 years experience</span>
+          <p class="member-skills">Expert in creative coloring, textured styles, and hair treatments</p>
+          
+        </div>
+      </div>
+      
+      <!-- Team Member 3 -->
+      <div class="member-card">
+        <div class="member-image">
+          <img src="/storage/emulated/0/guy2.jpg" alt="Chike Obi">
+        </div>
+        <div class="member-info">
+          <h3>Chike Obi</h3>
+          <span class="member-position">Beard Specialist</span>
+          <span class="member-experience">6 years experience</span>
+          <p class="member-skills">Master of beard grooming, straight razor shaves, and skin care</p>
+          
+        </div>
+      </div>
+      
+      <!-- Team Member 4 -->
+      <div class="member-card">
+        <div class="member-image">
+          <img src="/storage/emulated/0/girl2.jpg" alt="Funke Balogun">
+        </div>
+        <div class="member-info">
+          <h3>Funke Balogun</h3>
+          <span class="member-position">Locs Specialist</span>
+          <span class="member-experience">9 years experience</span>
+          <p class="member-skills">Dreadlock expert with skills in maintenance, styling, and repairs</p>
+          
+        </div>
+      </div>
+      
+      <!-- Team Member 5 -->
+      <div class="member-card">
+        <div class="member-image">
+          <img src="/storage/emulated/0/guy3.jpg" alt="Emeka Nwankwo">
+        </div>
+        <div class="member-info">
+          <h3>Emeka Nwankwo</h3>
+          <span class="member-position">Cutting Specialist</span>
+          <span class="member-experience">9 years experience</span>
+          <p class="member-skills">Precision cutting for all hair types and modern styles</p>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Experience the Master Clips Difference</h2>
+    <p>Book your appointment today and discover why we're Ikorodu's most trusted barbershop</p>
+    <a href="https://wa.me/2348080164223" class="cta-btn" target="_blank">
+      Book Now <i class="fab fa-whatsapp"></i>
+    </a>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Master Clips. All rights reserved.
+    </div>
+  </footer>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Burger toggle
+      const burger = document.getElementById('burger');
+      const navLinks = document.getElementById('navLinks');
+      
+      burger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        burger.classList.toggle('active');
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          burger.classList.remove('active');
+        });
+      });
+
+      // Back to top button
+      const backToTop = document.getElementById('backToTop');
+      
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      // Smooth scrolling for all links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
