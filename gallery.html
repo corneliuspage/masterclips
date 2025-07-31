@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="View our gallery of premium haircuts and grooming services at Master Clips Barbershop in Ikorodu, Lagos" />
+  <meta name="keywords" content="barbershop gallery, haircut photos, beard styling, grooming portfolio, Master Clips" />
+  <meta name="author" content="Master Clips" />
+  <title>Gallery | Master Clips Barbershop</title>
+  <style>
+    :root {
+      --black: #1A1A1A;
+      --gray: #6E6E6E;
+      --red: #C62828;
+      --white: #F5F5F5;
+      --transition: all 0.3s ease-in-out;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      animation: fadeIn 1.5s ease-in;
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    header img {
+      height: 60px;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: var(--white);
+      opacity: 0.8;
+    }
+
+    nav {
+      background-color: var(--black);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0.5rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-logo {
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      padding: 0.5rem 1rem;
+      color: var(--white);
+      text-decoration: none;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .burger div {
+      width: 25px;
+      height: 3px;
+      background-color: var(--white);
+      margin: 3px 0;
+      transition: var(--transition);
+    }
+
+    .burger.active div:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .burger.active div:nth-child(2) {
+      opacity: 0;
+    }
+
+    .burger.active div:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .gallery-hero {
+      background: url('/storage/emulated/0/fade2.jpg') no-repeat center center/cover;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      animation: slideIn 1s ease-in-out;
+    }
+
+    .gallery-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .gallery-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .gallery-hero h1 {
+      font-size: 2.5rem;
+      color: var(--white);
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+      animation: fadeIn 2s ease-in-out;
+      margin-bottom: 1rem;
+    }
+
+    .gallery-hero p {
+      color: var(--white);
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    section {
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--black);
+      position: relative;
+      display: inline-block;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background-color: var(--red);
+    }
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      aspect-ratio: 1/1;
+      transition: var(--transition);
+      animation: fadeInUp 0.8s ease-out;
+      animation-fill-mode: both;
+    }
+
+    .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+    .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+    .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+    .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+    .gallery-item:nth-child(5) { animation-delay: 0.5s; }
+    .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+    .gallery-item:nth-child(7) { animation-delay: 0.7s; }
+    .gallery-item:nth-child(8) { animation-delay: 0.8s; }
+    .gallery-item:nth-child(9) { animation-delay: 0.9s; }
+    .gallery-item:nth-child(10) { animation-delay: 1.0s; }
+    .gallery-item:nth-child(11) { animation-delay: 1.1s; }
+    .gallery-item:nth-child(12) { animation-delay: 1.2s; }
+    .gallery-item:nth-child(13) { animation-delay: 1.3s; }
+    .gallery-item:nth-child(14) { animation-delay: 1.4s; }
+    .gallery-item:nth-child(15) { animation-delay: 1.5s; }
+    .gallery-item:nth-child(16) { animation-delay: 1.6s; }
+    .gallery-item:nth-child(17) { animation-delay: 1.7s; }
+    .gallery-item:nth-child(18) { animation-delay: 1.8s; }
+    .gallery-item:nth-child(19) { animation-delay: 1.9s; }
+    .gallery-item:nth-child(20) { animation-delay: 2.0s; }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color: var(--white);
+      padding: 1.5rem 1rem 1rem;
+      transform: translateY(100%);
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+
+    .gallery-caption h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .gallery-caption p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition);
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 8px;
+      box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+      animation: zoomIn 0.3s ease-out;
+    }
+
+    .lightbox-caption {
+      color: var(--white);
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: var(--white);
+      font-size: 2rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .lightbox-close:hover {
+      color: var(--red);
+      transform: rotate(90deg);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2rem;
+      transform: translateY(-50%);
+    }
+
+    .lightbox-nav button {
+      background-color: rgba(255,255,255,0.2);
+      color: var(--white);
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .lightbox-nav button:hover {
+      background-color: var(--red);
+    }
+
+    .contact {
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    .contact a {
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .contact a:hover {
+      opacity: 0.8;
+    }
+
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--white);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--red);
+    }
+
+    .copyright {
+      opacity: 0.7;
+      margin-top: 1rem;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--red);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 99;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (max-width: 768px) {
+      .burger {
+        display: flex;
+      }
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+        background-color: var(--black);
+        padding: 1rem 0;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .gallery-hero h1 {
+        font-size: 2rem;
+      }
+      .gallery-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .fade-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease;
+    }
+
+    .fade-scroll.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="/storage/emulated/0/MCW.png" alt="Master Clips Logo" />
+    <p>Perfect trims creating the perfect look</p>
+  </header>
+
+  <nav>
+    <div class="burger" id="burger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <section class="gallery-hero">
+    <div class="gallery-hero-content">
+      <h1>Our Work Gallery</h1>
+      <p>Browse through our collection of premium haircuts and grooming services</p>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Recent Work</h2>
+    <p>Explore our portfolio of stylish transformations</p>
+    
+    <div class="gallery-container">
+      <!-- Gallery Items 1-20 -->
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/fade.jpeg" alt="Classic Fade Haircut">
+        <div class="gallery-caption">
+          <h3>Classic Fade</h3>
+          <p>Smooth transition from short to long</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/beard.jpg" alt="Beard Trim and Shape">
+        <div class="gallery-caption">
+          <h3>Beard Trim</h3>
+          <p>Precision shaping and styling</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/kid2.jpg" alt="Kids Haircut">
+        <div class="gallery-caption">
+          <h3>Kids Cut</h3>
+          <p>Fun and comfortable for children</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/kid.webp" alt="Buzz Cut">
+        <div class="gallery-caption">
+          <h3>Buzz Cut</h3>
+          <p>Clean and low maintenance</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/heropics.jpg" alt="Pompadour Style">
+        <div class="gallery-caption">
+          <h3>Pompadour</h3>
+          <p>Classic volume with modern edge</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/heropics.jpg" alt="Undercut Style">
+        <div class="gallery-caption">
+          <h3>Undercut</h3>
+          <p>Sharp contrast with clean lines</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/fade.jpeg" alt="Taper Fade">
+        <div class="gallery-caption">
+          <h3>Taper Fade</h3>
+          <p>Gradual length change</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/fade2.jpg" alt="Design Haircut">
+        <div class="gallery-caption">
+          <h3>Design Cut</h3>
+          <p>Creative patterns and designs</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/heropics.jpg" alt="Afro Style">
+        <div class="gallery-caption">
+          <h3>Afro Style</h3>
+          <p>Natural texture with shape</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/heropics.jpg" alt="Line Up">
+        <div class="gallery-caption">
+          <h3>Line Up</h3>
+          <p>Crisp edges and clean lines</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/heropics.jpg" alt="High Top Fade">
+        <div class="gallery-caption">
+          <h3>High Top Fade</h3>
+          <p>80s inspired with modern twist</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/heropics.jpg" alt="Bald Fade">
+        <div class="gallery-caption">
+          <h3>Bald Fade</h3>
+          <p>Smooth transition to skin</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/heropics.jpg" alt="Textured Crop">
+        <div class="gallery-caption">
+          <h3>Textured Crop</h3>
+          <p>Layered and dimensional</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/heropics.jpg" alt="French Crop">
+        <div class="gallery-caption">
+          <h3>French Crop</h3>
+          <p>Short and textured on top</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/heropics.jpg" alt="Side Part">
+        <div class="gallery-caption">
+          <h3>Side Part</h3>
+          <p>Classic gentleman's style</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/heropics.jpg" alt="Curly Fade">
+        <div class="gallery-caption">
+          <h3>Curly Fade</h3>
+          <p>Showcasing natural curls</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/mohawk.jpeg" alt="Mohawk">
+        <div class="gallery-caption">
+          <h3>Mohawk</h3>
+          <p>Bold and edgy statement</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/fade.jpeg" alt="Temple Fade">
+        <div class="gallery-caption">
+          <h3>Temple Fade</h3>
+          <p>Focus on temple area</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/heropics.jpg" alt="Layered Cut">
+        <div class="gallery-caption">
+          <h3>Layered Cut</h3>
+          <p>Added volume and movement</p>
+        </div>
+      </div>
+      
+      <div class="gallery-item">
+        <img src="/storage/emulated/0/fade2.jpg" alt="Skin Fade">
+        <div class="gallery-caption">
+          <h3>Skin Fade</h3>
+          <p>Ultra-clean look</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <span class="lightbox-close" id="lightboxClose">&times;</span>
+      <img id="lightboxImage" src="" alt="">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+    <div class="lightbox-nav">
+      <button id="lightboxPrev">&lt;</button>
+      <button id="lightboxNext">&gt;</button>
+    </div>
+  </div>
+
+  <section class="contact fade-scroll" id="contact">
+    <h1>Visit Us</h1>
+    <p>152, Sagamu Road, Ikorodu, Lagos</p>
+    <p>Phone: <a href="tel:08080164223">08080164223</a></p>
+    <p>Email: <a href="mailto:corneliusayomide@gmail.com">info@masterclips.com</a></p>
+    <p>Opening Hours: Mon-Sat 9am-7pm</p>
+  </section>
+
+   <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Master Clips. All rights reserved.
+    </div>
+  </footer>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Burger toggle
+      const burger = document.getElementById('burger');
+      const navLinks = document.getElementById('navLinks');
+      
+      burger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        burger.classList.toggle('active');
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          burger.classList.remove('active');
+        });
+      });
+
+      // Scroll animation
+      const scrollElems = document.querySelectorAll('.fade-scroll');
+      const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      scrollElems.forEach(el => scrollObserver.observe(el));
+
+      // Back to top button
+      const backToTop = document.getElementById('backToTop');
+      
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      // Smooth scrolling for all links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Lightbox functionality
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightboxImage');
+      const lightboxCaption = document.getElementById('lightboxCaption');
+      const lightboxClose = document.getElementById('lightboxClose');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      let currentImageIndex = 0;
+      const images = Array.from(galleryItems).map(item => ({
+        src: item.querySelector('img').src,
+        title: item.querySelector('h3').textContent,
+        desc: item.querySelector('p').textContent
+      }));
+
+      // Open lightbox when gallery item is clicked
+      galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+          currentImageIndex = index;
+          updateLightbox();
+          lightbox.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      // Close lightbox
+      lightboxClose.addEventListener('click', () => {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+
+      // Navigation arrows
+      document.getElementById('lightboxPrev').addEventListener('click', showPrevImage);
+      document.getElementById('lightboxNext').addEventListener('click', showNextImage);
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') {
+          lightbox.classList.remove('active');
+          document.body.style.overflow = '';
+        } else if (e.key === 'ArrowLeft') {
+          showPrevImage();
+        } else if (e.key === 'ArrowRight') {
+          showNextImage();
+        }
+      });
+
+      function updateLightbox() {
+        const currentImage = images[currentImageIndex];
+        lightboxImage.src = currentImage.src;
+        lightboxCaption.innerHTML = `<h3>${currentImage.title}</h3><p>${currentImage.desc}</p>`;
+      }
+
+      function showPrevImage() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        updateLightbox();
+      }
+
+      function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        updateLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
